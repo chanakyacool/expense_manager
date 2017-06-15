@@ -30,12 +30,12 @@ class BillsController < ApplicationController
 
 private
   def bill_params
-    params.require(:bill).permit(:item, :amount, :user_id)
+    params.require(:bill).permit(:item, :amount, :user_id, :location)
   end
   
   def is_member
     group = params[:group_id] ? Group.find(params[:group_id]) : Bill.find(params[:id]).group
-    unless group.users.exists?(current_user)
+    unless group.users.exists?(current_user.id)
       flash[:error] = "You are not a member of the group"
       redirect_to groups_path
     end

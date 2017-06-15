@@ -2,22 +2,27 @@
   <h1>Add Bill</h1>
   <%= form_for(:bill, url: group_bills_path, html: {role: "form"}) do |f| %>
 
-    <div class="field form-group">
+    <div class="dropdown">
       <%= f.label :item %>
-      <%= f.text_field :item, class: "form-control" %>
+      <%=  f.select :item, [['Lunch', "Lunch"], ['Dinner', "Dinner"], ['Snacks', "Snacks"], ['Other', "Other"]], {},{class: "form-control"} %>
     </div>
-
+		 <br>
     <div class="field form-group">
       <%= f.label :amount %>
       <%= f.text_field :amount, class: "form-control" %>
     </div>
 
-    <div class="field form-group">
-      <label>Paid By</label>
-      <%=select(:bill, :user_id, @members.all.collect {|m| [ m.name, m.id ] })%>
-    </div>
+		<div class="field form-group">
+			<%= f.label :location %>
+			<%= f.text_field :location, class: "form-control" %>
+		</div>
 
-    <span class="actions">
+    <div class="field dropdown">
+      <label>Paid By</label>
+      <%=select(:bill, :user_id, @members.all.collect {|m| [ m.name, m.id ] }, {}, {class: 'form-control'})%>
+    </div>
+     <br>
+    <span class="form-group actions">
       <%= f.submit "Add", class: "btn btn-default" %>
     </span>
 

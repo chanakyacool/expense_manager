@@ -6,7 +6,8 @@
       <tr>
         <th>Date</th>
         <th>Item</th>
-        <th>Ammount</th>
+        <th>Location</th>
+        <th>Amount</th>
         <th>Paid By</th>
         <th>Action</th>
       </tr>
@@ -16,6 +17,7 @@
         <tr>
           <td><%=bill.updated_at %></td>
           <td><%=bill.item %></td>
+          <td><%=bill.location %></td>
           <td><%=number_to_currency(bill.amount, :unit => "Rs") %></td>
           <td><%=bill.paid_by.name %></td>
           <td><%=link_to "Edit", edit_bill_path(bill) %></td>

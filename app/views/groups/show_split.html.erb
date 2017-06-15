@@ -1,0 +1,19 @@
+<table class="table table-bordered">
+  <h3>For <%=@viewer.name %> in group <%=@group.name %></h3>
+  <thead>
+    <tr>
+      <th>Member</th>
+      <% @other_members.each do |mem| %>
+        <th><%=mem.name %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%=@viewer.name%></td>
+      <% @payements.each do |p| %>
+        <td><%=p %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
